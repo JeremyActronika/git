@@ -1,0 +1,341 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>GIT et Github</h1>
+					<p><a href="https://github.com/JeremyActronika/git">https://github.com/JeremyActronika/git</a></p>
+				</section>
+				<section>
+					<section>
+						<h1>Les avantages de Git</h1>
+					</section>
+					<section>
+						<h2>Décentralisation</h2>
+						<img src="img/decentralisation.png">
+					</section>
+					<section>
+						<h2>Gestion des branches</h2>
+						<img src="img/branch.png">
+					</section>
+					<section>
+						<h2>Fusion des branches : merge</h2>
+						<img src="img/merge.png">
+					</section>
+					<section>
+						<h2>Rebase des branches : rebase</h2>
+						<img src="img/rebase.png">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Les inconvénients de Git</h1>
+					</section>
+					<section>
+						<h2>La complexité</h2>
+						<img src="img/complex.png">
+					</section>
+					<section>
+						<h2>Le nombre de commandes</h2>
+						<img src="img/command.png">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Synchronisation</h1>
+					</section>
+					<section>
+						<h2>Création : clone</h2>
+						<pre class="bash"><code>
+$ git clone git@github.com:leroilion/git.git
+Cloning into 'git'...
+remote: Counting objects: 3, done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+Checking connectivity... done.
+						</code></pre>
+						<img width="50%" src="img/clone.png">
+					</section>
+					<section>
+						<h2>Création : init</h2>
+						<pre class="bash"><code>
+$ git init
+Initialized empty Git repository in C:/Users/Jérémy/Documents/git/tmp/.git/
+$ git init --bare
+Initialized empty Git repository in C:/Users/Jérémy/Documents/git/tmp/
+						</code></pre>
+						<img width="50%" src="img/init.jpg">
+					</section>
+					<section>
+						<h2>Synchronisation : fetch</h2>
+						<pre class="bash"><code>
+$ git fetch
+						</code></pre>
+						<img width="90%" src="img/fetch.png">
+					</section>
+					<section>
+						<h2>Synchronisation : pull</h2>
+						<pre class="bash"><code>
+$ git pull origin master
+From github.com:leroilion/git
+ * branch            master     -> FETCH_HEAD
+Already up-to-date.
+
+$ git pull origin master --rebase
+From github.com:leroilion/git
+ * branch            master     -> FETCH_HEAD
+Current branch master is up to date.
+						</code></pre>
+						<img width="70%" src="img/pull.png">
+					</section>
+					<section>
+						<h2>Synchronisation : push</h2>
+						<pre class="bash"><code>
+$ git push origin master
+Counting objects: 20, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (18/18), done.
+Writing objects: 100% (20/20), 844.41 KiB | 0 bytes/s, done.
+Total 20 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To git@github.com:JeremyActronika/git.git
+ * [new branch]      master -> master
+						</code></pre>
+						<img width="70%" src="img/push.png">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Travail local</h1>
+					</section>
+					<section>
+						<h2>Voir l'état du dépot : git status</h2>
+						<pre class="bash"><code>
+$ git status
+On branch master
+Changes to be committed:
+
+        new file:   img/status.png
+
+Changes not staged for commit:
+
+        modified:   index.html
+
+Untracked files:
+
+        img/add.png
+						</code></pre>
+						<img width="50%" src="img/status.png">
+					</section>
+					<section>
+						<h2>Voir les différences : git diff</h2>
+						<img width="80%" src="img/diff.png">
+					</section>
+					<section>
+						<h2>Ajouter des fichiers : git add</h2>
+						<pre class="bash"><code>
+$ git add img/add.png
+						</code></pre>
+						<img width="50%" src="img/add.png">
+					</section>
+					<section>
+						<h2>Créer le commit : git commit</h2>
+						<pre class="bash"><code>
+$ git commit -s // And add comment message
+[master a3eb86e] Update part local work
+ 4 files changed, 38 insertions(+)
+ create mode 100644 img/add.png
+ create mode 100644 img/commit.jpg
+ create mode 100644 img/status.png
+						</code></pre>
+						<img width="50%" src="img/commit.jpg">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Voyage entre les branches</h1>
+					</section>
+					<section>
+						<h2>Créer une branche : git branch</h2>
+						<pre class="bash"><code>
+$ git branch feature_x
+
+						</code></pre>
+						<img width="70%" src="img/branches.png">
+					</section>
+					<section>
+						<h2>Changer de branche : git checkout</h2>
+						<pre class="bash"><code>
+$ git checkout feature_x
+M       index.html
+Switched to branch 'feature_x'
+						</code></pre>
+						<img width="60%" src="img/checkout.jpg">
+					</section>
+					<section>
+						<h2>Réinitialiser une branche : git reset</h2>
+						<pre class="bash"><code>
+$ git reset 9fe729
+Unstaged changes after reset:
+M       index.html
+						</code></pre>
+						<img width="40%" src="img/revert_reset.png">
+					</section>
+					<section>
+						<h2>Modifier l'architecture : git rebase</h2>
+						<pre class="bash"><code>
+$ git rebase -i HEAD~2
+						</code></pre>
+						<img width="50%" src="img/rebase.png">
+					</section>
+					<section>
+						<h2>Récupérer un commit : git cherry-pick</h2>
+						<pre class="bash"><code>
+$ git cherry-pick dba672
+On branch master
+You are currently cherry-picking commit dba672b.
+						</code></pre>
+						<img width="50%" src="img/cherry-pick.png">
+					</section>
+					<section>
+						<h2>Ajouter des marqueurs : git tag</h2>
+						<pre class="bash"><code>
+$ git tag -a theLionKing
+						</code></pre>
+						<img width="60%" src="img/tag.png">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Un workflow</h1>
+					</section>
+					<section>
+						<h2>git flow</h2>
+						<img width="50%" src="img/git-flow.png">
+					</section>
+					<section>
+						<h2>pull request</h2>
+						<img src="img/pull-request.png">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Des outils de travail</h1>
+					</section>
+					<section>
+						<h2>Serveur central : github</h2>
+						<img width="80%" src="img/github.jpg">
+					</section>
+					<section>
+						<h2>Des tickets</h2>
+						<img src="img/issue.png">
+					</section>
+					<section>
+						<h2>Gestion de projet</h2>
+						<img src="img/project.png">
+					</section>
+					<section>
+						<h2>Les hooks</h2>
+						<img src="img/hook.png">
+					</section>
+					<section>
+						<h2>Test unitaire : travis</h2>
+						<img src="img/travis.png">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Pour aller plus loin</h1>
+						<ul>
+							<li>git add -p</li>
+							<li>git bisect</li>
+							<li>git blame</li>
+							<li>git commit --amend</li>
+							<li>git submodule update --init</li>
+							<li> git submodule add ...</li>
+							<li>git remote add origin ...</li>
+							<li>git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch*.mp3' --prune-empty --tag-name-filtercat -- --all</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Des questions ?</h1>
+						<img width="60%" src="img/fire.png">
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				slideNumber: false,
+				history: true,
+				keyboard: true,
+				overview: true,
+				center: true,
+				touch: true,
+				loop: false,
+				rtl: false,
+				shuffle: false,
+				fragments: true,
+				embedded: false,
+				help: true,
+				showNotes: false,
+				autoSlide: 0,
+				autoSlideStoppable: true,
+				autoSlideMethod: Reveal.navigateNext,
+				mouseWheel: false,
+				hideAddressBar: true,
+				previewLinks: false,
+				transition: 'slide',
+				transitionSpeed: 'default',
+				backgroundTransition: 'default',
+				viewDistance: 3,
+				parallaxBackgroundImage: '',
+				parallaxBackgroundSize: '',
+				parallaxBackgroundHorizontal: null,
+				parallaxBackgroundVertical: null,
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				theme: Reveal.getQueryHash().theme || 'default',
+				transition: Reveal.getQueryHash().transition || 'default',
+				dependencies: [
+					{ src: 'reveal.js/plugin/markdown/marked.js' },
+					{ src: 'reveal.js/plugin/markdown/markdown.js' },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+					{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'reveal.js/plugin/math/math.js', async: true },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
